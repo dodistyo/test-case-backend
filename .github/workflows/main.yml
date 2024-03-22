@@ -39,7 +39,9 @@ jobs:
         run: |
           docker buildx build --platform linux/amd64 -t dodistyo/sample-backend:latest -t dodistyo/sample-backend:${{ github.sha }} .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push dodistyo/sample-backend:latest && docker push dodistyo/sample-backend:${{ github.sha }}
+          docker images
+          docker push dodistyo/sample-backend:latest
+          docker push dodistyo/sample-backend:${{ github.sha }}
   # deploy:
   #   needs: build
   #   runs-on: ubuntu-latest
