@@ -53,9 +53,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            ssh -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
             cd /usr/share/app-deployment &&
             git pull origin master &&
             export BACKEND_IMAGE_TAG=${{ github.sha }} &&
             docker stack deploy -c docker-compose.yml app
-            EOF
