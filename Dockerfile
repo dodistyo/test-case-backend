@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install --only=production
 
 # Copy the rest of the application code
-COPY index.js index.js
+COPY . .
 
 # Expose any ports your app uses
 EXPOSE 8000
