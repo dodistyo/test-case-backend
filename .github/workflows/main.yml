@@ -55,5 +55,4 @@ jobs:
           script: |
             cd /usr/share/app-deployment &&
             git pull origin master &&
-            export BACKEND_IMAGE_TAG=${{ github.sha }} &&
-            docker stack deploy -c docker-compose.yml app
+            docker service update --image dodistyo/sample-backend:${{ github.sha }} app_backend
